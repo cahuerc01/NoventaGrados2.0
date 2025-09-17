@@ -48,5 +48,5 @@ sh ejecutar_gui.sh
 Para generar la documentación del código en HTML:
 ```sh
 sh documentar.sh
-
+```
 Luego, puedes abrir doc/index.html en tu navegador para ver la documentación.
