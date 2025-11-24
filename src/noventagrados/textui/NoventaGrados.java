@@ -140,7 +140,8 @@ public class NoventaGrados {
      * que jugamos. Comprueba la corrección del texto introducido.
      * 
      * @param args argumentos
-     * @throws OpcionNoDisponibleException si el argumento con el modo de deshacer no
+     * @throws OpcionNoDisponibleException si el argumento con el modo de deshacer
+     *                                     no
      *                                     es correcto
      */
     private static void extraerModoDeshacer(String[] args) throws OpcionNoDisponibleException {
@@ -167,14 +168,14 @@ public class NoventaGrados {
      */
     private static void seleccionarMecanismoDeshacer(String configuracion) throws IllegalArgumentException {
         switch (configuracion) {
-        case "jugadas":
-            deshacer = new MaquinaDelTiempoConJugadas(new Date());
-            break;
-        case "arbitros":
-            deshacer = new MaquinaDelTiempoConArbitros(new Date());
-            break;
-        default:
-            throw new IllegalArgumentException("Modo no definido:" + configuracion);
+            case "jugadas":
+                deshacer = new MaquinaDelTiempoConJugadas(new Date());
+                break;
+            case "arbitros":
+                deshacer = new MaquinaDelTiempoConArbitros(new Date());
+                break;
+            default:
+                throw new IllegalArgumentException("Modo no definido:" + configuracion);
         }
     }
 
@@ -209,7 +210,7 @@ public class NoventaGrados {
      * @param jugada jugada en formato texto
      * @return true si el usuario introduce salir, false en caso contrario
      */
-    private static boolean comprobarSalir(String jugada) {
+    public static boolean comprobarSalir(String jugada) {
         return jugada.equalsIgnoreCase(TEXTO_SALIR);
     }
 
@@ -219,7 +220,7 @@ public class NoventaGrados {
      * @param texto texto
      * @return true si el usuario introduce deshacer, false en caso contrario
      */
-    private static boolean comprobarDeshacer(String texto) {
+    public static boolean comprobarDeshacer(String texto) {
         return texto.equalsIgnoreCase(TEXTO_DESHACER);
     }
 
@@ -234,7 +235,7 @@ public class NoventaGrados {
      * @return true si el formato de la jugada es correcta según las coordenadas
      *         disponibles del tablero
      */
-    private static boolean validarFormato(String textoJugada) {
+    public static boolean validarFormato(String textoJugada) {
         // Si la longitud es correcta y a la mitad hay un guion...
         if (textoJugada.length() == TAMAÑO_JUGADA && textoJugada.charAt(TAMAÑO_JUGADA / 2) == '-') {
             // Validar dígitos en el resto de valores...
@@ -264,7 +265,7 @@ public class NoventaGrados {
      * @param jugadaTexto texto con la jugada
      * @return jugada
      */
-    private static Jugada extraerJugada(String jugadaTexto) {
+    public static Jugada extraerJugada(String jugadaTexto) {
         Coordenada coordenadaOrigen = extraerCoordenada(jugadaTexto, 0, INICIO_COORDENADA_DESTINO);
         Coordenada coordenadaDestino = extraerCoordenada(jugadaTexto, INICIO_COORDENADA_DESTINO + 0, TAMAÑO_JUGADA);
         Celda origen = arbitro.consultarTablero().consultarCelda(coordenadaOrigen);
@@ -296,7 +297,7 @@ public class NoventaGrados {
      * @param jugada jugada
      * @return true si es legal, false en caso contrario
      */
-    private static boolean esLegal(Jugada jugada) {
+    public static boolean esLegal(Jugada jugada) {
         return arbitro.esMovimientoLegal(jugada);
     }
 
