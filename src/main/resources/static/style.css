@@ -1,0 +1,140 @@
+:root {
+    --bg-color: #1a1a2e;
+    --board-bg: #16213e;
+    --cell-color: #0f3460;
+    --cell-hover: #533483;
+    --text-color: #e94560;
+    --white-piece: #ffffff;
+    --black-piece: #000000;
+    --highlight: #ffd700;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: white;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+}
+
+h1 {
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.status {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: var(--board-bg);
+    border-radius: 8px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    background-color: var(--board-bg);
+    padding: 10px;
+    border-radius: 10px;
+    aspect-ratio: 1;
+    margin: 0 auto;
+}
+
+.cell {
+    background-color: var(--cell-color);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.cell:hover {
+    background-color: var(--cell-hover);
+}
+
+.cell.selected {
+    background-color: var(--highlight);
+    box-shadow: 0 0 10px var(--highlight);
+}
+
+.piece {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.piece.white {
+    background-color: var(--white-piece);
+    color: black;
+    border: 2px solid #ccc;
+}
+
+.piece.black {
+    background-color: var(--black-piece);
+    color: white;
+    border: 2px solid #333;
+}
+
+.piece.queen::after {
+    content: "♕";
+    font-size: 1.5em;
+}
+
+.piece.pawn::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: currentColor;
+    border-radius: 50%;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+.message {
+    min-height: 24px;
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: var(--text-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.1s;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Responsive text for small screens */
+@media (max-width: 400px) {
+    .piece {
+        font-size: 0.8em;
+    }
+}
